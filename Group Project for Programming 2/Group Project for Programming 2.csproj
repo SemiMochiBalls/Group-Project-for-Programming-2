@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountException.cs" />
     <Compile Include="Enum_ExceptionType.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
-	<Compile Include="Account.cs" />
+    <Compile Include="Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
