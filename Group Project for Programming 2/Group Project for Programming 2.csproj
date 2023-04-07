@@ -47,7 +47,7 @@
     <Compile Include="Enum_ExceptionType.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Main_Method.cs" />
     <Compile Include="Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
