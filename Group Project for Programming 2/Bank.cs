@@ -76,9 +76,35 @@ namespace Group_Project_for_Programming_2
             Logger.OnLogin += LoginHandler;
             USERS.Add(name, newPerson);
         }
+        public static void AddAccount(Account account)
+        {
+            ACCOUNTS.Add(account.Number, account);
+        }
         public static void AddUserToAccount(string number, string name)
         {
+            if (USERS.ContainsKey(name) && ACCOUNTS.ContainsKey(number))
+            {
+                Account account = ACCOUNTS[number];
+                account.AddUser(USERS[name]);
+            }
+            else
+            {
+                throw new AccountException("Invalid user or account number.");
+            }
+        }
+        public static List<Transaction> GetAllTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
 
+            foreach (KeyValuePair<string, Account> entry in ACCOUNTS)
+            {
+                Account account = entry.Value;
+                transactions.AddRange(account.Transactions);
+            }
+
+            transactions.Sort();
+
+            return transactions;
         }
     }
 }
