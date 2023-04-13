@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountException.cs" />
+    <Compile Include="DayTime.cs" />
     <Compile Include="Enum_ExceptionType.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="Utils.cs" />
