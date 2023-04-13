@@ -11,7 +11,8 @@ namespace Group_Project_for_Programming_2
     {
         static private int LAST_NUMBER = 100_000;
         readonly List<Person> users = new List<Person>();
-        readonly List<Transaction> transactions = new List<Transaction>();
+        protected List<Transaction> Transactions { get; set; }
+        private static int LAST_NUMBER = 100000;
         // you need to add an even called OnTransaction
         public event EventHandler OnTransaction;
         public string Number { get; }
@@ -22,9 +23,18 @@ namespace Group_Project_for_Programming_2
 
         }
 
-        public void deposit(double balance, Person person)
+        public void Deposit(double balance, Person person)
         {
+            Balance += Amount;
 
+                if (Balance < LowestBalance)
+                {
+                    LowestBalance = Balance;
+                }
+
+                Transaction transaction = new Transaction(Number, Amount, person);
+                Transactions.Add(transaction);
+                
         }
         public void AddUser(Person person)
         {
@@ -34,6 +44,7 @@ namespace Group_Project_for_Programming_2
         {
 
         }
+
         // create virtual OnTransactionOccur( sender: object. args: Event Args)
 
 
