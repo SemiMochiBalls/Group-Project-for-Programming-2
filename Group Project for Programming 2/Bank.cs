@@ -73,12 +73,42 @@ namespace Group_Project_for_Programming_2
         public static void AddPerson(string name, string sin)
         {
             Person newPerson = new Person(name, sin);
-            Logger.OnLogin += LoginHandler;
+                //LoggeR?
+            Logger.OnLogin += Logger.LoginHandler;
             USERS.Add(name, newPerson);
+        }
+        public static void AddAccount(Account account)
+        {
+            ACCOUNTS.Add(account.Number, account);
         }
         public static void AddUserToAccount(string number, string name)
         {
-
+            if (USERS.ContainsKey(name) && ACCOUNTS.ContainsKey(number))
+            {
+                Account account = ACCOUNTS[number];
+                account.AddUser(USERS[name]);
+            }
+            else
+            {
+                //Needs enum
+                throw new AccountException("");
+            }
         }
+        /*
+        public static List<Transaction> GetAllTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+
+            foreach (KeyValuePair<string, Account> entry in ACCOUNTS)
+            {
+                Account account = entry.Value;
+                //
+                transactions.AddRange(account.Transactions);
+            }
+
+            transactions.Sort();
+
+            return transactions;
+        }*/
     }
 }

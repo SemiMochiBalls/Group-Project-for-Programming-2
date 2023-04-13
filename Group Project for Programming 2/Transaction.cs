@@ -11,7 +11,7 @@ namespace Group_Project_for_Programming_2
         public string AccountNumber { get; }
         public double Amount { get; }
         public Person Originator { get; }
-        public DateTime Time { get; }
+        public DayTime Time { get; }
 
         public Transaction(string accountNumber, double amount, Person person)
         {
