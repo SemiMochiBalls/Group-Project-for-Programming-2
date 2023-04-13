@@ -7,46 +7,69 @@ using Microsoft.SqlServer.Server;
 
 namespace Group_Project_for_Programming_2
 {
-    abstract class Account
+
+    public abstract class Account
     {
-        static private int LAST_NUMBER = 100_000;
-        readonly List<Person> users = new List<Person>();
-        protected List<Transaction> Transactions { get; set; }
+        protected readonly List<Person> users;
+        protected readonly List<Transaction> transactions;
         private static int LAST_NUMBER = 100000;
-        // you need to add an even called OnTransaction
-        public event EventHandler OnTransaction;
-        public string Number { get; }
+
         public double Balance { get; protected set; }
         public double LowestBalance { get; protected set; }
-        public Account (string type, double balance)
-        {
+        public string Number { get; }
 
+        public event EventHandler OnTransaction;
+
+        public Account(string type, double balance)
+        {
+            Number = type + LAST_NUMBER++;
+            Balance = balance;
+            LowestBalance = balance;
+            transactions = new List<Transaction>();
+            users = new List<Person>();
         }
 
-        public void Deposit(double balance, Person person)
+        public void Deposit(double amount, Person person)
         {
-            Balance += Amount;
+            Balance += amount;
+            if (Balance < LowestBalance)
+            {
+                LowestBalance = Balance;
+            }
 
-                if (Balance < LowestBalance)
-                {
-                    LowestBalance = Balance;
-                }
-
-                Transaction transaction = new Transaction(Number, Amount, person);
-                Transactions.Add(transaction);
-                
+            var transaction = new Transaction(Number, amount, person);
+            transactions.Add(transaction);
+            OnTransaction?.Invoke(this, EventArgs.Empty);
         }
+
         public void AddUser(Person person)
         {
-
+            users.Add(person);
         }
-        public void IsUser(string name)
+
+        public bool IsUser(string name)
         {
-
+            return users.Any(p => p.Name == name);
         }
 
-        // create virtual OnTransactionOccur( sender: object. args: Event Args)
+        public abstract void PrepareMonthlyReport();
 
+        public virtual void OnTransactionOccur(object sender, EventArgs args)
+        {
+            OnTransaction?.Invoke(this, EventArgs.Empty);
+        }
 
+        public override string ToString()
+        {
+            var result = $"{Number} - Users: ";
+            result += string.Join(", ", users.Select(p => p.Name));
+            result += $", Balance: {Balance:C2}";
+            result += "\nTransactions:\n";
+            foreach (var transaction in transactions)
+            {
+                result += transaction + "\n";
+            }
+            return result;
+        }
     }
 }
