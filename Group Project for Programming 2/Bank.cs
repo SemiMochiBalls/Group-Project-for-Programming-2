@@ -72,7 +72,8 @@ namespace Group_Project_for_Programming_2
         }
         public static void AddPerson(string name, string sin)
         {
-            Person newPerson = new Person(name, sin);
+            Person newPerson = new Person(name, sin);1
+                //LoggeR?
             Logger.OnLogin += LoginHandler;
             USERS.Add(name, newPerson);
         }
@@ -89,9 +90,11 @@ namespace Group_Project_for_Programming_2
             }
             else
             {
-                throw new AccountException("Invalid user or account number.");
+                //Needs enum
+                throw new AccountException("");
             }
         }
+        /*
         public static List<Transaction> GetAllTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
@@ -99,12 +102,13 @@ namespace Group_Project_for_Programming_2
             foreach (KeyValuePair<string, Account> entry in ACCOUNTS)
             {
                 Account account = entry.Value;
+                //
                 transactions.AddRange(account.Transactions);
             }
 
             transactions.Sort();
 
             return transactions;
-        }
+        }*/
     }
 }
