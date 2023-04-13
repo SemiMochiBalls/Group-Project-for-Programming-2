@@ -72,7 +72,7 @@ namespace Group_Project_for_Programming_2
         }
         public static void AddPerson(string name, string sin)
         {
-            Person newPerson = new Person(name, sin);1
+            Person newPerson = new Person(name, sin);
                 //LoggeR?
             Logger.OnLogin += LoginHandler;
             USERS.Add(name, newPerson);
