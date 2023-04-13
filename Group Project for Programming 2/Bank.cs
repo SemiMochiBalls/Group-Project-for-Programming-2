@@ -91,7 +91,7 @@ namespace Group_Project_for_Programming_2
             else
             {
                 //Needs enum
-                throw new AccountException("");
+                throw new AccountException(ExceptionType.USER_DOES_NOT_EXIST);
             }
         }
         /*
