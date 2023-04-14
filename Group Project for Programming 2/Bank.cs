@@ -90,25 +90,8 @@ namespace Group_Project_for_Programming_2
             }
             else
             {
-                //Needs enum
                 throw new AccountException(ExceptionType.USER_DOES_NOT_EXIST);
             }
         }
-        /*
-        public static List<Transaction> GetAllTransactions()
-        {
-            List<Transaction> transactions = new List<Transaction>();
-
-            foreach (KeyValuePair<string, Account> entry in ACCOUNTS)
-            {
-                Account account = entry.Value;
-                //
-                transactions.AddRange(account.Transactions);
-            }
-
-            transactions.Sort();
-
-            return transactions;
-        }*/
     }
 }
