@@ -12,7 +12,7 @@ namespace Group_Project_for_Programming_2
         private static double INTEREST_RATE = 0.005;
         private bool hasOverdraft;
 
-        public CheckingAccount(double balance = 0, bool hasOverdraft = false)
+        public SavingsAccount(double balance = 0, bool hasOverdraft = false)
             : base("SV-", balance)
         {
             this.hasOverdraft = hasOverdraft;
@@ -50,10 +50,10 @@ namespace Group_Project_for_Programming_2
 
         public override void PrepareMonthlyReport()
         {
-            double serviceCharge = Transactions.Count * COST_PER_TRANSACTION;
+            double serviceCharge = transactions.Count * COST_PER_TRANSACTION;
             double interest = LowestBalance * INTEREST_RATE / 12;
             Balance += interest - serviceCharge;
-            Transactions.Clear();
+            transactions.Clear();
         }
 
         private bool IsAssociatedWithAccount(Person person)

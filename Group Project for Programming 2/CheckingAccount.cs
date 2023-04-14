@@ -51,10 +51,10 @@ class CheckingAccount : Account, ITransaction
 
         public override void PrepareMonthlyReport()
         {
-            double serviceCharge = Transactions.Count * COST_PER_TRANSACTION;
+            double serviceCharge = transactions.Count * COST_PER_TRANSACTION;
             double interest = LowestBalance * INTEREST_RATE / 12;
             Balance += interest - serviceCharge;
-            Transactions.Clear();
+            transactions.Clear();
         }
 
         private bool IsAssociatedWithAccount(Person person)
