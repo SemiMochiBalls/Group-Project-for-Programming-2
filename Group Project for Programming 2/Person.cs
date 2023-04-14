@@ -22,11 +22,17 @@ using System;
 
         public void Login(string password)
         {
+            try{
             if (this.password != password)
+                {
+                    IsAuthenticated = false;
+                    OnLogin?.Invoke(this, new LoginEventArgs(Name, false));
+                    throw new AccountException(ExceptionType.PASSWORD_INCORRECT);
+                }
+            }
+            catch(AccountException)
             {
-                IsAuthenticated = false;
-                OnLogin?.Invoke(this, new LoginEventArgs(Name, false));
-                throw new AccountException(ExceptionType.PASSWORD_INCORRECT);
+                Console.WriteLine(ExceptionType.PASSWORD_INCORRECT);
             }
 
             IsAuthenticated = true;
