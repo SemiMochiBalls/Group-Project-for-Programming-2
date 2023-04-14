@@ -26,19 +26,19 @@ public class SavingAccount : Account, ITransaction
         if (!IsPersonAssociated(person))
         {
             OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
-            throw new AccountException("Person is not associated with this account.");
+            throw new AccountException(ExceptionType.USER_DOES_NOT_EXIST);
         }
 
         if (!person.IsLoggedIn)
         {
             OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
-            throw new AccountException("Person is not logged in.");
+            throw new AccountException(ExceptionType.USER_NOT_LOGGED_IN);
         }
 
         if (amount > Balance && !HasOverdraft)
         {
             OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
-            throw new AccountException("Insufficient balance.");
+            throw new AccountException(ExceptionType.NO_OVERDRAFT);
         }
 
         OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
