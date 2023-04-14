@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
-//Adiden was he
+
 namespace Group_Project_for_Programming_2
 {
     public class Person
-    {// all of the fields are to the request of the proffesor and the methods are to the request of the proffesor
+    {// all of the fields are to the request of the professor and the methods are to the request of the professor
         private string Password;
         public event EventHandler OnLogin;
         public string Sin { get; }
         public string Name { get; }
-        // the IsAuthenticaed will now wortk without a setter i have no idea why proff asked for no setter
+        // the IsAuthenticated will now work without a setter i have no idea why prof asked for no setter
         public bool IsAuthenticated { get; set; }
         public Person (string name, string sin)
         {
