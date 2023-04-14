@@ -2,40 +2,45 @@
 
 namespace Group_Project_for_Programming_2
 {
+using System;
+
     public class Person
-    {// all of the fields are to the request of the professor and the methods are to the request of the professor
-        private string Password;
-        public event EventHandler OnLogin;
-        public string Sin { get; }
+    {
+        private string password;
+        public event EventHandler<LoginEventArgs> OnLogin;
+
+        public string SIN { get; }
         public string Name { get; }
-        // the IsAuthenticated will now work without a setter i have no idea why prof asked for no setter
-        public bool IsAuthenticated { get; set; }
-        public Person (string name, string sin)
+        public bool IsAuthenticated { get; private set; }
+
+        public Person(string name, string sin)
         {
             Name = name;
-            Sin = sin;
+            SIN = sin;
+            password = SIN.Substring(0, 3);
         }
+
         public void Login(string password)
         {
-            if (password == Password) 
+            if (this.password != password)
             {
-                IsAuthenticated = true;
-                // need to make EventHandler
-            }
-            else
-            {   // implement EventHandler
                 IsAuthenticated = false;
+                OnLogin?.Invoke(this, new LoginEventArgs(Name, false));
+                throw new AccountException(ExceptionType.PASSWORD_INCORRECT);
             }
 
+            IsAuthenticated = true;
+            OnLogin?.Invoke(this, new LoginEventArgs(Name, true));
         }
-        public void Logout() 
-        {// all this does is deauth the user
+
+        public void Logout()
+        {
             IsAuthenticated = false;
         }
+
         public override string ToString()
-        {// all this is meant to do is to return the name of the person
-            return $"Your Name is {Name}";
+        {
+            return Name;
         }
     }
-
 }

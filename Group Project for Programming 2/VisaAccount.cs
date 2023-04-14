@@ -1,4 +1,5 @@
-﻿namespace Group_Project_for_Programming_2
+﻿
+namespace Group_Project_for_Programming_2
 {
     class VisaAccount : Account, ITransaction
     {
@@ -14,31 +15,31 @@
         public void DoPayment(double amount, Person person)
         {
             Deposit(amount, person);
-            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
+            OnTransactionOccur(this, new TransactionEventArgs(person.Name, amount, true));
         }
 
         public void DoPurchase(double amount, Person person)
         {
             if (!IsAssociatedWithAccount(person))
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(this, new TransactionEventArgs(person.Name, amount, false));
                 throw new AccountException(ExceptionType.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
             }
 
             if (!IsLoggedIn(person))
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(this, new TransactionEventArgs(person.Name, amount, false));
                 throw new AccountException(ExceptionType.USER_NOT_LOGGED_IN);
             }
 
             if (amount > Balance + creditLimit)
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(this, new TransactionEventArgs(person.Name, amount, false));
                 throw new AccountException(ExceptionType.CREDIT_LIMIT_HAS_BEEN_EXCEEDED);
             }
 
             Deposit(-amount, person);
-            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
+            OnTransactionOccur(this, new TransactionEventArgs(person.Name, amount, true));
         }
 
         public override void PrepareMonthlyReport()
@@ -47,6 +48,11 @@
             Balance -= interest;
             transactions.Clear();
 
+        }
+
+        public void Withdraw(double amount, Person person)
+        {
+            throw new System.NotImplementedException();
         }
 
         //Mcdonalds
