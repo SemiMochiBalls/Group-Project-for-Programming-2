@@ -16,10 +16,4 @@ namespace Group_Project_for_Programming_2
         USER_DOES_NOT_EXIST,
         USER_NOT_LOGGED_IN
     }
-    enum AccountType
-    {
-        Checking,
-        Saving,
-        Visa
-    }
 }
