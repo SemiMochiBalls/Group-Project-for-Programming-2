@@ -70,6 +70,50 @@ namespace Group_Project_for_Programming_2
             AddUserToAccount(number, "Patrick");
             AddUserToAccount(number, "Hao");
         }
+        public static void PrintAccounts()
+        {
+            Console.WriteLine("Accounts in the bank:");
+            foreach (var account in ACCOUNTS.Values)
+            {
+                Console.WriteLine(account);
+            }
+        }
+
+        // Method to print all persons in the USERS collection
+        public static void PrintPersons()
+        {
+            Console.WriteLine("Persons in the bank:");
+            foreach (var person in USERS.Values)
+            {
+                Console.WriteLine(person);
+            }
+        }
+
+        // Method to get a person by name
+        public static Person GetPerson(string name)
+        {
+            if (USERS.ContainsKey(name))
+            {
+                return USERS[name];
+            }
+            else
+            {
+                throw new AccountException(ExceptionType.USER_DOES_NOT_EXIST);
+            }
+        }
+
+        // Method to get an account by number
+        public static Account GetAccount(string number)
+        {
+            if (ACCOUNTS.ContainsKey(number))
+            {
+                return ACCOUNTS[number];
+            }
+            else
+            {
+                throw new AccountException(ExceptionType.ACCOUNT_DOES_NOT_EXIST);
+            }
+        }
         public static void AddPerson(string name, string sin)
         {
             Person newPerson = new Person(name, sin);
