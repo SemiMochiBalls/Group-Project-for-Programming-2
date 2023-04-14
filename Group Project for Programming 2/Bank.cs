@@ -117,8 +117,7 @@ namespace Group_Project_for_Programming_2
         public static void AddPerson(string name, string sin)
         {
             Person newPerson = new Person(name, sin);
-                //LoggeR?
-            Logger.OnLogin += Logger.LoginHandler;
+            newPerson.OnLogin += Logger.LoginHandler;
             USERS.Add(name, newPerson);
         }
         public static void AddAccount(Account account)
