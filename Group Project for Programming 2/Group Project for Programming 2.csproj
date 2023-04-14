@@ -50,7 +50,6 @@
     <Compile Include="Enum_ExceptionType.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="LoginEventArgs.cs" />
-    <Compile Include="SavingAccount.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionEventArgs.cs" />
     <Compile Include="Utils.cs" />
