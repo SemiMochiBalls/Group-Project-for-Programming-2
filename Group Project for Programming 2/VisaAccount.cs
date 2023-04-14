@@ -23,7 +23,7 @@ namespace Group_Project_for_Programming_2
             OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
         }
 
-        public void Withdraw(double amount, Person person)
+        public void DoPurchase(double amount, Person person)
         {
             if (!IsAssociatedWithAccount(person))
             {

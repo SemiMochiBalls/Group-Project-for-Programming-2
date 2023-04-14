@@ -281,11 +281,10 @@ namespace Group_Project_for_Programming_2
             Console.WriteLine("\n\nAll transactions");
 
             foreach (var transaction in Bank.GetAllTransactions())
-
+            {
                 Console.WriteLine(transaction);
-
+            }
             foreach (var keyValuePair in Bank.ACCOUNTS)
-
             {
 
                 Account account = keyValuePair.Value;
@@ -303,9 +302,6 @@ namespace Group_Project_for_Programming_2
                 Console.WriteLine(account);
 
             }
-
-
-
             Logger.ShowLoginEvents();
 
             Logger.ShowTransactionEvents();
