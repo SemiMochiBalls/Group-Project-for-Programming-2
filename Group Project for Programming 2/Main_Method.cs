@@ -62,17 +62,17 @@ namespace Group_Project_for_Programming_2
 
             VisaAccount a = Bank.GetAccount("VS-100000") as VisaAccount;
 
-            a.Pay(1500, p0);
+            a.DoPayment(1500, p0);
 
-            a.Purchase(200, p1);
+            a.DoPurchase(200, p1);
 
-            a.Purchase(25, p2);
+            a.DoPurchase(25, p2);
 
-            a.Purchase(15, p0);
+            a.DoPurchase(15, p0);
 
-            a.Purchase(39, p1);
+            a.DoPurchase(39, p1);
 
-            a.Pay(400, p0);
+            a.DoPayment(400, p0);
 
             Console.WriteLine(a);
 
@@ -80,13 +80,13 @@ namespace Group_Project_for_Programming_2
 
             a = Bank.GetAccount("VS-100001") as VisaAccount;
 
-            a.Pay(500, p0);
+            a.DoPayment(500, p0);
 
-            a.Purchase(25, p3);
+            a.DoPurchase(25, p3);
 
-            a.Purchase(20, p4);
+            a.DoPurchase(20, p4);
 
-            a.Purchase(15, p5);
+            a.DoPurchase(15, p5);
 
             Console.WriteLine(a);
 
@@ -162,13 +162,13 @@ namespace Group_Project_for_Programming_2
 
             a = Bank.GetAccount("VS-100006") as VisaAccount;
 
-            a.Pay(700, p0);
+            a.DoPayment(700, p0);
 
-            a.Purchase(20, p3);
+            a.DoPurchase(20, p3);
 
-            a.Purchase(10, p1);
+            a.DoPurchase(10, p1);
 
-            a.Purchase(15, p1);
+            a.DoPurchase(15, p1);
 
             Console.WriteLine(a);
 
@@ -210,7 +210,7 @@ namespace Group_Project_for_Programming_2
 
                 p3.Logout();
 
-                a.Purchase(12.5, p3);     //exception user is not logged in 
+                a.DoPurchase(12.5, p3);     //exception user is not logged in 
 
             }
 
@@ -222,7 +222,7 @@ namespace Group_Project_for_Programming_2
 
             {
 
-                a.Purchase(12.5, p0);     //user is not associated with this account 
+                a.DoPurchase(12.5, p0);     //user is not associated with this account 
 
             }
 
@@ -234,7 +234,7 @@ namespace Group_Project_for_Programming_2
 
             {
 
-                a.Purchase(5825, p4);     //credit limit exceeded 
+                a.DoPurchase(5825, p4);     //credit limit exceeded 
 
             }
 
