@@ -54,6 +54,18 @@ namespace Group_Project_for_Programming_2
         {
             throw new System.NotImplementedException();
         }
+                    private bool IsAssociatedWithAccount(Person person)
+            {
+                    // Check if the person is associated with this account
+                    // You can implement the logic here based on your requirements
+                return true;
+            }
+            private bool IsLoggedIn(Person person)
+            {
+                    // Check if the person is logged in
+                    // You can implement the logic here based on your requirements
+                    return true;
+            }
 
         //Mcdonalds
     }

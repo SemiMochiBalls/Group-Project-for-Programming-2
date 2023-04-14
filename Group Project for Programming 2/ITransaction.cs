@@ -4,6 +4,8 @@
     {
         void Withdraw(double amount, Person person);
         void Deposit(double amount, Person person);
+        void DoPayment(double amount, Person person);
+
     }
 
 }

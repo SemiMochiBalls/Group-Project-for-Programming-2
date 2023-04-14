@@ -276,10 +276,10 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine("\n\nAll transactions");
 
-            foreach (var transaction in Bank.GetAllTransactions())
+           /* foreach (var transaction in Bank.GetAllTransactions())
             {
                 Console.WriteLine(transaction);
-            }
+            }*/
             foreach (var keyValuePair in Bank.ACCOUNTS)
             {
 

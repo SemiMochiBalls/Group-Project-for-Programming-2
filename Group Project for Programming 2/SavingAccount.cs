@@ -1,4 +1,10 @@
-﻿namespace Group_Project_for_Programming_2
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Group_Project_for_Programming_2
 {
     class SavingAccount : Account, ITransaction
     {
@@ -15,31 +21,31 @@
         public new void Deposit(double amount, Person person)
         {
             base.Deposit(amount, person);
-            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
+            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true), EventArgs.Empty);
         }
 
         public void Withdraw(double amount, Person person)
         {
             if (!IsAssociatedWithAccount(person))
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false), EventArgs.Empty);
                 throw new AccountException(ExceptionType.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
             }
 
             if (!IsLoggedIn(person))
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false), EventArgs.Empty);
                 throw new AccountException(ExceptionType.USER_NOT_LOGGED_IN);
             }
 
             if (amount > Balance && !hasOverdraft)
             {
-                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false));
+                OnTransactionOccur(new TransactionEventArgs(person.Name, amount, false), EventArgs.Empty);
                 throw new AccountException(ExceptionType.NO_OVERDRAFT);
             }
 
             base.Deposit(-amount, person);
-            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true));
+            OnTransactionOccur(new TransactionEventArgs(person.Name, amount, true), EventArgs.Empty);
         }
 
         public override void PrepareMonthlyReport()
@@ -61,6 +67,11 @@
             // Check if the person is logged in
             // You can implement the logic here based on your requirements
             return true;
+        }
+
+        void ITransaction.DoPayment(double amount, Person person)
+        {
+            throw new NotImplementedException();
         }
     }
 }
