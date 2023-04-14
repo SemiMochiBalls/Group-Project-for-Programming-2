@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Group_Project_for_Programming_2
 {
-    class SavingsAccount : Account, ITransaction
+    class SavingAccount : Account, ITransaction
     {
         private static double COST_PER_TRANSACTION = 0.05;
         private static double INTEREST_RATE = 0.005;
         private bool hasOverdraft;
 
-        public SavingsAccount(double balance = 0, bool hasOverdraft = false)
+        public SavingAccount(double balance = 0, bool hasOverdraft = false)
             : base("SV-", balance)
         {
             this.hasOverdraft = hasOverdraft;
