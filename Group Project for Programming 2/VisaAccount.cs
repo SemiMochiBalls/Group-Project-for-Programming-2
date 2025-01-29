@@ -4,7 +4,7 @@
     {
         private double creditLimit;
         private const double INTEREST_RATE = 0.1995;
-
+        //Hi future me you did a good job here be kind to yourself
         public VisaAccount(double balance = 0, double creditLimit = 1200)
             : base("VS-", balance)
         {
