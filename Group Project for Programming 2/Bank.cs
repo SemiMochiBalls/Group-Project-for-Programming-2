@@ -29,7 +29,7 @@ namespace Group_Project_for_Programming_2
             AddAccount(new CheckingAccount(2000));      //CK-100004
             AddAccount(new CheckingAccount(1500, true));//CK-100005
             AddAccount(new VisaAccount(50, -550));      //VS-100006
-            AddAccount(new SavingAccount(1000));        //SV-100007 
+            AddAccount(new SavingAccount(1000));        //SV-100007
 
             string number = "VS-100000";
             AddUserToAccount(number, "Narendra");
@@ -67,6 +67,7 @@ namespace Group_Project_for_Programming_2
             AddUserToAccount(number, "Patrick");
             AddUserToAccount(number, "Hao");
         }
+
         public static void PrintAccounts()
         {
             Console.WriteLine("Accounts in the bank:");
@@ -111,16 +112,19 @@ namespace Group_Project_for_Programming_2
                 throw new AccountException(ExceptionType.ACCOUNT_DOES_NOT_EXIST);
             }
         }
+
         public static void AddPerson(string name, string sin)
         {
             Person newPerson = new Person(name, sin);
             newPerson.OnLogin += Logger.LoginHandler;
             USERS.Add(name, newPerson);
         }
+
         public static void AddAccount(Account account)
         {
             ACCOUNTS.Add(account.Number, account);
         }
+
         public static void AddUserToAccount(string number, string name)
         {
             if (USERS.ContainsKey(name) && ACCOUNTS.ContainsKey(number))

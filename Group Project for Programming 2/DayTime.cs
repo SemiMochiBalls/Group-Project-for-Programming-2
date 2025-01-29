@@ -1,7 +1,5 @@
 ﻿namespace Group_Project_for_Programming_2
 {
-
-
     public struct DayTime
     {
         private long minutes;
@@ -28,5 +26,4 @@
             return $"{years:D4}-{months + 1:D2}-{days + 1:D2} {hours:D2}:{remainingMinutes:D2}";
         }
     }
-
 }

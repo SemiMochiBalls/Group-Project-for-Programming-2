@@ -1,6 +1,6 @@
 ﻿namespace Group_Project_for_Programming_2
 {
-    enum ExceptionType
+    internal enum ExceptionType
     {
         ACCOUNT_DOES_NOT_EXIST,
         CREDIT_LIMIT_HAS_BEEN_EXCEEDED,

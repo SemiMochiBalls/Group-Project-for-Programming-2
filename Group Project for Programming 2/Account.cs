@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace Group_Project_for_Programming_2
 {
-
     public abstract class Account
     {
         protected readonly List<Person> users;

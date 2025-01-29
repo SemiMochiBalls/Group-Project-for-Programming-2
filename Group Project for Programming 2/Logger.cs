@@ -1,10 +1,10 @@
 ﻿namespace Group_Project_for_Programming_2
 {
-using System;
-using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
 
-public static class Logger
-{
+    public static class Logger
+    {
         private static List<string> loginEvents = new List<string>();
         private static List<string> transactionEvents = new List<string>();
 
@@ -48,5 +48,4 @@ public static class Logger
             }
         }
     }
-
 }

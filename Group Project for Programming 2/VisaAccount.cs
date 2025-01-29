@@ -1,7 +1,6 @@
-﻿
-namespace Group_Project_for_Programming_2
+﻿namespace Group_Project_for_Programming_2
 {
-    class VisaAccount : Account, ITransaction
+    internal class VisaAccount : Account, ITransaction
     {
         private double creditLimit;
         private const double INTEREST_RATE = 0.1995;
@@ -47,28 +46,27 @@ namespace Group_Project_for_Programming_2
             double interest = LowestBalance * INTEREST_RATE / 12;
             Balance -= interest;
             transactions.Clear();
-
         }
 
         public void Withdraw(double amount, Person person)
         {
             throw new System.NotImplementedException();
         }
-                    private bool IsAssociatedWithAccount(Person person)
-            {
-                    // Check if the person is associated with this account
-                    // You can implement the logic here based on your requirements
-                return true;
-            }
-            private bool IsLoggedIn(Person person)
-            {
-                    // Check if the person is logged in
-                    // You can implement the logic here based on your requirements
-                    return true;
-            }
+
+        private bool IsAssociatedWithAccount(Person person)
+        {
+            // Check if the person is associated with this account
+            // You can implement the logic here based on your requirements
+            return true;
+        }
+
+        private bool IsLoggedIn(Person person)
+        {
+            // Check if the person is logged in
+            // You can implement the logic here based on your requirements
+            return true;
+        }
 
         //Mcdonalds
     }
-
-    
 }
