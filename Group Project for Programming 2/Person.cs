@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace Group_Project_for_Programming_2
+﻿namespace Group_Project_for_Programming_2
 {
-using System;
+    using System;
 
     public class Person
     {
         private string password;
+
         public event EventHandler<LoginEventArgs> OnLogin;
 
         public string SIN { get; }
@@ -22,15 +21,16 @@ using System;
 
         public void Login(string password)
         {
-            try{
-            if (this.password != password)
+            try
+            {
+                if (this.password != password)
                 {
                     IsAuthenticated = false;
                     OnLogin?.Invoke(this, new LoginEventArgs(Name, false));
                     throw new AccountException(ExceptionType.PASSWORD_INCORRECT);
                 }
             }
-            catch(AccountException)
+            catch (AccountException)
             {
                 Console.WriteLine(ExceptionType.PASSWORD_INCORRECT);
             }

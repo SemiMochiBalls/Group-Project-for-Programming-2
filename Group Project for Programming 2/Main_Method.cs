@@ -2,9 +2,9 @@
 
 namespace Group_Project_for_Programming_2
 {
-    class Main_Method
+    internal class Main_Method
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("\nAll acounts:");
 
@@ -13,8 +13,6 @@ namespace Group_Project_for_Programming_2
             Console.WriteLine("\nAll Users:");
 
             Bank.PrintPersons();
-
-
 
             Person p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10;
 
@@ -40,8 +38,6 @@ namespace Group_Project_for_Programming_2
 
             p10 = Bank.GetPerson("Nicoletta");
 
-
-
             p0.Login("123"); p1.Login("234");
 
             p2.Login("345"); p3.Login("456");
@@ -52,9 +48,7 @@ namespace Group_Project_for_Programming_2
 
             p10.Login("234"); p8.Login("901");
 
-
-
-            //a visa account 
+            //a visa account
 
             VisaAccount a = Bank.GetAccount("VS-100000") as VisaAccount;
 
@@ -72,8 +66,6 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(a);
 
-
-
             a = Bank.GetAccount("VS-100001") as VisaAccount;
 
             a.DoPayment(500, p0);
@@ -86,9 +78,7 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(a);
 
-
-
-            //a saving account 
+            //a saving account
 
             SavingAccount b = Bank.GetAccount("SV-100002") as SavingAccount;
 
@@ -102,11 +92,9 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(b);
 
-
-
             b = Bank.GetAccount("SV-100003") as SavingAccount;
 
-            b.Deposit(300, p3);     //ok even though p3 is not a holder 
+            b.Deposit(300, p3);     //ok even though p3 is not a holder
 
             b.Deposit(32.90, p2);
 
@@ -116,9 +104,7 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(b);
 
-
-
-            //a checking account 
+            //a checking account
 
             CheckingAccount c = Bank.GetAccount("CK-100004") as CheckingAccount;
 
@@ -136,8 +122,6 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(c);
 
-
-
             c = Bank.GetAccount("CK-100005") as CheckingAccount;
 
             c.Deposit(33.33, p8);
@@ -154,8 +138,6 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(c);
 
-
-
             a = Bank.GetAccount("VS-100006") as VisaAccount;
 
             a.DoPayment(700, p0);
@@ -168,11 +150,9 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(a);
 
-
-
             b = Bank.GetAccount("SV-100007") as SavingAccount;
 
-            b.Deposit(300, p3);     //ok even though p3 is not a holder 
+            b.Deposit(300, p3);     //ok even though p3 is not a holder
 
             b.Deposit(32.90, p2);
 
@@ -182,121 +162,82 @@ namespace Group_Project_for_Programming_2
 
             Console.WriteLine(b);
 
-
-
             Console.WriteLine("\n\nExceptions:");
 
-            //The following will cause exception 
+            //The following will cause exception
 
             try
 
             {
-
-                p8.Login("911");            //incorrect password 
-
+                p8.Login("911");            //incorrect password
             }
-
             catch (AccountException e) { Console.WriteLine(e.Message); }
 
-
-
             try
 
             {
-
                 p3.Logout();
 
-                a.DoPurchase(12.5, p3);     //exception user is not logged in 
-
+                a.DoPurchase(12.5, p3);     //exception user is not logged in
             }
-
-            catch (AccountException e) { Console.WriteLine(e.Message); }
-
-
-
-            try
-
-            {
-
-                a.DoPurchase(12.5, p0);     //user is not associated with this account 
-
-            }
-
-            catch (AccountException e) { Console.WriteLine(e.Message); }
-
-
-
-            try
-
-            {
-
-                a.DoPurchase(5825, p4);     //credit limit exceeded 
-
-            }
-
             catch (AccountException e) { Console.WriteLine(e.Message); }
 
             try
 
             {
-
-                c.Withdraw(1500, p6);       //no overdraft 
-
+                a.DoPurchase(12.5, p0);     //user is not associated with this account
             }
-
             catch (AccountException e) { Console.WriteLine(e.Message); }
-
-
 
             try
 
             {
-
-                Bank.GetAccount("CK-100018"); //account does not exist 
-
+                a.DoPurchase(5825, p4);     //credit limit exceeded
             }
-
             catch (AccountException e) { Console.WriteLine(e.Message); }
-
-
 
             try
 
             {
-
-                Bank.GetPerson("Trudeau");  //user does not exist 
-
+                c.Withdraw(1500, p6);       //no overdraft
             }
-
             catch (AccountException e) { Console.WriteLine(e.Message); }
 
+            try
 
+            {
+                Bank.GetAccount("CK-100018"); //account does not exist
+            }
+            catch (AccountException e) { Console.WriteLine(e.Message); }
 
-            //show all transactions 
+            try
+
+            {
+                Bank.GetPerson("Trudeau");  //user does not exist
+            }
+            catch (AccountException e) { Console.WriteLine(e.Message); }
+
+            //show all transactions
 
             Console.WriteLine("\n\nAll transactions");
 
-           /* foreach (var transaction in Bank.GetAllTransactions())
-            {
-                Console.WriteLine(transaction);
-            }*/
+            /* foreach (var transaction in Bank.GetAllTransactions())
+             {
+                 Console.WriteLine(transaction);
+             }*/
             foreach (var keyValuePair in Bank.ACCOUNTS)
             {
-
                 Account account = keyValuePair.Value;
 
                 Console.WriteLine("\nBefore PrepareMonthlyReport()");
 
                 Console.WriteLine(account);
 
-
-
                 Console.WriteLine("\nAfter PrepareMonthlyReport()");
 
-                account.PrepareMonthlyReport();   //all transactions are cleared, balance changes 
+                account.PrepareMonthlyReport();   //all transactions are cleared, balance changes
 
                 Console.WriteLine(account);
-
             }
             Logger.ShowLoginEvents();
 

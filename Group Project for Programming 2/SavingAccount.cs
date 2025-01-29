@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Group_Project_for_Programming_2
 {
-    class SavingAccount : Account, ITransaction
+    internal class SavingAccount : Account, ITransaction
     {
         private static double COST_PER_TRANSACTION = 0.05;
         private static double INTEREST_RATE = 0.005;
@@ -58,11 +54,12 @@ namespace Group_Project_for_Programming_2
 
         private bool IsAssociatedWithAccount(Person person)
         {
-                // Check if the person is associated with this account
-                // You can implement the logic here based on your requirements
+            // Check if the person is associated with this account
+            // You can implement the logic here based on your requirements
             return true;
         }
-    private bool IsLoggedIn(Person person)
+
+        private bool IsLoggedIn(Person person)
         {
             // Check if the person is logged in
             // You can implement the logic here based on your requirements

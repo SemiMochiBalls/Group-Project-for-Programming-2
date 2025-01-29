@@ -19,8 +19,5 @@
         {
             return $"Account Number: {AccountNumber}, Name: {Originator.Name}, Amount: {Amount:C}, Time: {Time}";
         }
-    } 
-    
+    }
 }
-
-
